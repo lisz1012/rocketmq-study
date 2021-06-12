@@ -933,7 +933,7 @@ public class MQClientInstance {
         }
 
         MQProducerInner prev = this.producerTable.putIfAbsent(group, producer);
-        if (prev != null) {
+        if (prev != null) { // 这个group已经注册过了，则当前这次注册不成功
             log.warn("the producer group[{}] exist already.", group);
             return false;
         }
