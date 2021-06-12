@@ -223,7 +223,7 @@ public class MQClientInstance {
 
     public void start() throws MQClientException {
 
-        synchronized (this) {
+        synchronized (this) { // 加锁，别又多个线程同时执行，只有CREATE_JUST状态才能启动各服务和producer，然后把状态设成RUNNING
             switch (this.serviceState) {
                 case CREATE_JUST:
                     this.serviceState = ServiceState.START_FAILED;
