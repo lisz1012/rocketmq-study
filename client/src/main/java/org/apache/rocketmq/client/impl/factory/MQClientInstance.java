@@ -252,7 +252,7 @@ public class MQClientInstance {
         }
     }
 
-    private void startScheduledTask() {
+    private void startScheduledTask() { // 发送心跳、定时与 NameServer 同步数据等任务
         if (null == this.clientConfig.getNamesrvAddr()) {
             this.scheduledExecutorService.scheduleAtFixedRate(new Runnable() {
 
